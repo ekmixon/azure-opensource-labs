@@ -58,7 +58,7 @@ Create Application Gateway.
 ```bash
 az network application-gateway create \
     --name $APPLICATION_GATEWAY_NAME \
-    --location $RESOURCE_LOCATION \
+    --location $LOCATION \
     --resource-group $RESOURCE_GROUP \
     --sku Standard_v2 \
     --public-ip-address $PUBLIC_IP_NAME \
