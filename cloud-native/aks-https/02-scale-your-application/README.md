@@ -63,7 +63,8 @@ az network application-gateway create \
     --sku Standard_v2 \
     --public-ip-address $PUBLIC_IP_NAME \
     --vnet-name $VNET_NAME \
-    --subnet $SUBNET_NAME
+    --subnet $SUBNET_NAME \
+    --priority 1000
 ```
 
 ## Enable the AGIC add-on in existing AKS cluster
