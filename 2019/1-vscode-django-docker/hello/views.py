@@ -13,8 +13,7 @@ class HomeListView(ListView):
     model = LogMessage
 
     def get_context_data(self, **kwargs):
-        context = super(HomeListView, self).get_context_data(**kwargs)
-        return context
+        return super(HomeListView, self).get_context_data(**kwargs)
 
 
 def about(request):
@@ -39,13 +38,9 @@ def hello_there(request, name):
 
 def log_message(request):
     form = LogMessageForm(request.POST or None)
-    if request.method == "POST":
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.log_date = datetime.now()
-            message.save()
-            return redirect("home")
-        else:
-            return render(request, "hello/log_message.html", {"form": form})
-    else:
+    if request.method != "POST" or not form.is_valid():
         return render(request, "hello/log_message.html", {"form": form})
+    message = form.save(commit=False)
+    message.log_date = datetime.now()
+    message.save()
+    return redirect("home")
